@@ -11,4 +11,7 @@
     <select id="selectUserById" parameterType="int" resultMap="BaseResultMap">  
         SELECT * FROM user WHERE id = #{id}  
     </select>  
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.app.domain.User">
+    	INSERT INTO user(name) VALUES(#{name})
+    </insert>
 </mapper>  

@@ -1,5 +1,10 @@
 package com.app.domain;
 
+/**
+ * 
+ * @author young
+ *
+ */
 public class User {
 	private Integer id;
 	private String name;
