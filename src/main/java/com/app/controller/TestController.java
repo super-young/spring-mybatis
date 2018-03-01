@@ -1,7 +1,9 @@
 package com.app.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -12,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.repository.util.NullableWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -83,6 +86,14 @@ public class TestController {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	@RequestMapping("/map")
+	@ResponseBody
+	public void map() {
+		Map<String, Integer> map = new HashMap<String,Integer>(3);
+		Integer i = map.computeIfAbsent("Yang", s->s.length());
+		System.out.println(map.get("Yang"));
 	}
 	
 }
